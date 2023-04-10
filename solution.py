@@ -15,5 +15,5 @@ def solution(x_success: int,
     err1 = p1*(1-p1)/x_cnt
     err2 = p2*(1-p2)/y_cnt
     z_score = (p2 - p1) / sqrt(err1+err2)
-    t_critical = stats.t.ppf(1-alpha/2, x_cnt+y_cnt-2)
-    return z_score > t_critical
+    p_value = stats.norm.sf(z_score)
+    return p_value < alpha
